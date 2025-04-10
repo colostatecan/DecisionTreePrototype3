@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scenario Simulation Prototype</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: auto;
+      padding: 2rem;
+      background-color: #f9f9f9;
+    }
+    .scenario {
+      margin-top: 2rem;
+    }
+    .screen {
+      display: none;
+      margin-top: 2rem;
+    }
+    button {
+      display: block;
+      margin: 1rem 0;
+      padding: 0.7rem;
+      width: 100%;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .visible {
+      display: block !important;
+    }
+  </style>
+</head>
+<body>
+  <h1>Scenario Simulation</h1>
+  <p>This prototype simulates a user journey through a purchasing decision path.</p>
+
+  <div class="scenario" id="screen1">
+    <p><strong>Scenario:</strong> A GTA needs to buy software for a conference presentation next week. Who is making the request?</p>
+    <button onclick="goToScreen('screen2')">GTAs</button>
+    <button onclick="goToScreen('screenEndInvalid')">Student</button>
+  </div>
+
+  <div class="screen" id="screen2">
+    <p>Where do you plan to purchase the software?</p>
+    <button onclick="goToScreen('screen3Pcard')">Online (accepts credit card)</button>
+    <button onclick="goToScreen('screenEndInvalid')">In-store (cash only)</button>
+  </div>
+
+  <div class="screen" id="screen3Pcard">
+    <p>May you buy it?</p>
+    <button onclick="goToScreen('screen4Yes')">Allowed by PCard rules</button>
+    <button onclick="goToScreen('screenEndInvalid')">Not Allowed</button>
+  </div>
+
+  <div class="screen" id="screen4Yes">
+    <p>How would you like to pay?</p>
+    <button onclick="showResult('✅ GTAs may purchase online using a PCard for eligible items.')">PCard</button>
+    <button onclick="showResult('🚫 That payment method is not supported for this purchase.')">Cash</button>
+  </div>
+
+  <div class="screen" id="screenEndInvalid">
+    <p>🚫 This option does not comply with current policy. Please consult your EBO.</p>
+    <button onclick="restartSimulation()">🔁 Start Over</button>
+  </div>
+
+  <div class="screen" id="result">
+    <p id="resultMessage"></p>
+    <button onclick="restartSimulation()">🔁 Start Over</button>
+  </div>
+
+  <script>
+    function goToScreen(screenId) {
+      document.querySelectorAll('.scenario, .screen').forEach(div => div.classList.remove('visible'));
+      document.getElementById(screenId).classList.add('visible');
+    }
+
+    function showResult(message) {
+      goToScreen('result');
+      const resultDiv = document.getElementById('resultMessage');
+      resultDiv.textContent = message;
+    }
+
+    function restartSimulation() {
+      document.querySelectorAll('.scenario, .screen').forEach(div => div.classList.remove('visible'));
+      document.getElementById('screen1').classList.add('visible');
+    }
+
+    // Start simulation automatically
+    document.getElementById('screen1').classList.add('visible');
+  </script>
+</body>
+</html>

@@ -37,31 +37,31 @@
   <p>This prototype simulates a user journey through a purchasing decision path.</p>
 
   <div class="scenario" id="screen1">
-    <p><strong>Scenario:</strong> A GTA needs to buy software for a conference presentation next week. Who is making the request?</p>
+    <p><strong>Scenario:</strong> A studen needs software for their E-Days presentation next week. Who is making the request?</p>
     <button onclick="goToScreen('screen2')">GTAs</button>
     <button onclick="goToScreen('screenEndInvalid')">Student</button>
   </div>
 
   <div class="screen" id="screen2">
     <p>Where do you plan to purchase the software?</p>
-    <button onclick="goToScreen('screen3Pcard')">Online (accepts credit card)</button>
-    <button onclick="goToScreen('screenEndInvalid')">In-store (cash only)</button>
+    <button onclick="goToScreen('screen3Pcard')">Online (accepts credit card, tax-free account established)</button>
+    <button onclick="goToScreen('screenEndInvalid')">In-store (credit card, tax-free purchases supported)</button>
   </div>
 
   <div class="screen" id="screen3Pcard">
     <p>May you buy it?</p>
     <button onclick="goToScreen('screen4Yes')">Allowed by PCard rules</button>
-    <button onclick="goToScreen('screenEndInvalid')">Not Allowed</button>
+    <button onclick="goToScreen('screenEndInvalid')">Not Allowed by PCard rules</button>
   </div>
 
   <div class="screen" id="screen4Yes">
     <p>How would you like to pay?</p>
     <button onclick="showResult('✅ GTAs may purchase online using a PCard for eligible items.')">PCard</button>
-    <button onclick="showResult('🚫 That payment method is not supported for this purchase.')">Cash</button>
+    <button onclick="showResult('🚫 Do not purchase. Consult with EBO.')">Cash</button>
   </div>
 
   <div class="screen" id="screenEndInvalid">
-    <p>🚫 This option does not comply with current policy. Please consult your EBO.</p>
+    <p>🚫 This option does not comply with current policy. Please consult EBO.</p>
     <button onclick="restartSimulation()">🔁 Start Over</button>
   </div>
 

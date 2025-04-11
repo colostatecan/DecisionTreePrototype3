@@ -37,26 +37,26 @@
   <p>This prototype simulates a user journey through a purchasing decision path.</p>
 
   <div class="scenario" id="screen1">
-    <p><strong>Scenario:</strong> A studen needs software for their E-Days presentation next week. Who is making the request?</p>
-    <button onclick="goToScreen('screen2')">GTAs</button>
+    <p><strong>Scenario:</strong> A student needs supplies for their E-Days presentation next week. Who is making the request?</p>
+    <button onclick="goToScreen('screen2')">GTA</button>
     <button onclick="goToScreen('screenEndInvalid')">Student</button>
   </div>
 
   <div class="screen" id="screen2">
-    <p>Where do you plan to purchase the software?</p>
-    <button onclick="goToScreen('screen3Pcard')">Online (accepts credit card)</button>
+    <p>Where do you plan to purchase the supplies?</p>
+    <button onclick="goToScreen('screen3Pcard')">Online store via @colostate.edu account (accepts credit card)</button>
     <button onclick="goToScreen('screenEndInvalid')">In-store (credit card)</button>
   </div>
 
   <div class="screen" id="screen3Pcard">
-    <p>May you buy it?</p>
+    <p>Is it an allowed item?</p>
     <button onclick="goToScreen('screen4Yes')">Allowed by PCard rules</button>
     <button onclick="goToScreen('screenEndInvalid')">Not Allowed by PCard rules</button>
   </div>
 
   <div class="screen" id="screen4Yes">
     <p>Can purchase be tax-free?</p>
-    <button onclick="showResult('✅ GTAs may purchase online using a PCard for eligible items.')">Tax Exempt</button>
+    <button onclick="showResult('✅ GTAs may purchase online or in-store using a PCard for eligible items.')">Tax Exempt</button>
     <button onclick="showResult('🚫 Do not purchase until you can set-up a tax-free account or make a tax-free purchase.')">Tax</button>
   </div>
 
